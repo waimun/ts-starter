@@ -5,9 +5,10 @@
   "devDependencies": {
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
+    "ts-standard": "*",
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "ts-standard && jest"
   }
 }
