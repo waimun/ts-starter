@@ -5,7 +5,7 @@ A bare minimal project that uses Typescript, code linting and styling from Stand
 ### Install
 
 - Node.js is required to install project dependencies. Use the latest version whenever possible.
-- Run `npm install` in the root of the project directory to install the dev dependencies.
+- Run `npm ci` in the root of the project directory to install all dependencies.
 
 ### Usage
 
@@ -16,20 +16,27 @@ requirements.
 
 #### `package.json`
 
-Take a look at `package.json` and make adjustments if necessary. Run `npm update --dry-run` occasionally to check
-which dependencies have newer versions.
+Inspect file `package.json` and make any necessary adjustments. Run `npm outdated` occasionally to check which
+dependencies have newer versions.
+
+#### `npm run lint`
+
+Uses `ts-standard` to run code lint and style checks.
+
+#### `npm run compile`
+
+Uses `tsc` to compile all Typescript files in the `src` folder and output to the `dist` folder. Javascript files are
+not part of the compilation but can be added by modifying `tsconfig.json` with `allowJs` option.
 
 #### `npm test`
 
-Run `npm test` to pass code lint and style checks, and unit tests.
+Uses Jest to run unit tests. By default, files ending in .test.ts or .test.js are tested. Modify `jest.config.js` to
+configure Jest.
 
-#### `dist` folder
+#### `npm run build`
 
-Run `npx tsc` to compile the Typescript files in the `src` folder and output to the `dist` folder. Javascript files
-are not part of the compilation but can be added by modifying `tsconfig.json` with `allowJs` option.
-
-Compilation step can (or should) be added to the `scripts` section of the `package.json` file, deemed appropriate
-for the project.
+Runs these scripts in sequential order: `lint`, `compile`, `test`. This will ensure that your code passes lint and
+style checks, compiles successfully, and passes all unit tests.
 
 #### `tsconfig.json`
 
